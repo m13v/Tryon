@@ -1,9 +1,28 @@
 import gradio as gr
 from gradio_client import Client
-
+import httpx
+import traceback
 # Initialize the Gradio client
-client = Client("https://humanaigc-outfitanyone.hf.space/--replicas/mms7m/")
+client = Client(src="https://humanaigc-outfitanyone.hf.space/--replicas/mms7m/")
 
+def get_tryon_result(model_img_url, top_garment_url, lower_garment_url):
+    try:
+        tryon_result = client.predict([
+            "https://raw.githubusercontent.com/matthew-heartful/Tryon/main/images/Eva_0.png", 
+            "https://raw.githubusercontent.com/matthew-heartful/Tryon/main/images/top5.png", 
+            "https://raw.githubusercontent.com/matthew-heartful/Tryon/main/images/bottom1.png"], 
+            api_name="/get_tryon_result"
+        )
+        print('result=', tryon_result)
+        return tryon_result
+    except httpx.ReadTimeout:
+        print("API call timed out. Please try again later.")
+        return None
+    except Exception as e:
+        print(f"API call failed: {type(e).__name__}, {e}")
+        traceback.print_exc()  # This will print the full traceback
+        return None
+    
 def load_example(index):
     try:
         response = client.predict(index, api_name="/load_example")
@@ -21,10 +40,8 @@ def load_example(index):
 #     return model_result, top_garment_result, lower_garment_result
 
 # Function to get try-on result
-def get_tryon_result(model_img_url, top_garment_url, lower_garment_url):
-    tryon_result = client.predict([model_img_url, top_garment_url, lower_garment_url], api_name="/get_tryon_result")
-    return tryon_result
 
+    
 # Gradio interface
 with gr.Blocks() as app:
     with gr.Row():
