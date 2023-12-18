@@ -25,7 +25,7 @@ def get_tryon_result(model_img_path, top_garment_path, lower_garment_path):
         return tryon_result
     except Exception as e:
         print(f"API call failed: {e}")
-        return None
+        return "Error: " + str(e)
 
 
 custom_css = """
@@ -104,9 +104,73 @@ h1 {
 /* Additional custom CSS to hide the footer */
 footer { visibility: hidden; }
 /* Your other styles */
+/* Additional CSS for centering the 'Get Started' button */
+.get-started-button-container {
+    position: absolute;
+    top: 20px;  /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* Style for the 'Get Started' button */
+.get-started-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    margin-top: 50px;  /* Adjust based on the actual height of your video */
+}
+/* Style for the down arrow */
+.down-arrow {
+    text-align: center;
+    font-size: 48px; /* Large size for the arrow */
+    color: white; /* Arrow color */
+    margin-top: 20px; /* Space above the arrow */
+    margin-bottom: 20px; /* Space below the arrow */
+}
+/* Style for the additional text at the bottom */
+.bottom-text {
+    font-size: 1.875rem; /* Same as h1 */
+    font-weight: bold; /* Same as h1 */
+    letter-spacing: -0.05em; /* Same as h1 */
+    text-align: center;
+    margin-top: 50px; /* Space above the text */
+}
 """
 
 with gr.Blocks(css=custom_css) as demo:
+   
+    # Define the video component with the correct video path
+    video_path = "video/2023.12.17_4524.mp4"  # Replace with your video path
+    video_display = gr.Video(value=video_path, format="mp4")
+    gr.HTML("""
+    <div class="down-arrow">
+        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
+    </div>
+    """)
+    gr.HTML("""
+    <div class="down-arrow">
+        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
+    </div>
+    """)
+    gr.HTML("""
+    <div class="down-arrow">
+        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
+    </div>
+    """)
     gr.HTML("""
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
             Put Clothes on Models
@@ -137,15 +201,23 @@ with gr.Blocks(css=custom_css) as demo:
                 example = gr.Examples(inputs=init_image, examples_per_page=40, examples=[os.path.join('images', f) for f in model_examples])
             
         with gr.Column():
-            gr.HTML('<div class="column-title">3. Generate (it might take some time; if it fails, try refreshing)</div>')
+            gr.HTML('<div class="column-title">3. Generate (sometimes it fails due to high volume, try regenerating/refreshing)</div>')
             run_button = gr.Button(value="Generate", elem_id="generate-btn")
-            gallery = gr.Image()
+            gallery = gr.Image(label="Output")  # Assuming this is your output image component
+
             run_button.click(
                 fn=get_tryon_result, 
                 inputs=[init_image, garment_top, garment_down], 
-                outputs=[gallery],
+                outputs=gallery,  # Output is now just the gallery
                 concurrency_limit=2
             )
+    gr.HTML("""
+    <div class="bottom-text">
+        Partnerships, questions: <a href="https://t.me/matthew_ddi">telegram</a>, <a href="mailto:matthew.ddy@gmail.com">email</a><br>
+        Powered by OutfitAnyone model, Gradio<br>
+        Not for commercial use
+    </div>
+    """)
 
 if __name__ == "__main__":
-    demo.launch(show_api=False, share=True)
+    demo.launch(show_api=False, share=False)
