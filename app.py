@@ -152,7 +152,8 @@ h1 {
 """
 
 with gr.Blocks(css=custom_css) as demo:
-   
+    # Display the GIF
+    gr.Image(value="images/hhL.gif")
     # Define the video component with the correct video path
     video_path = "video/2023.12.17_4524.mp4"  # Replace with your video path
     video_display = gr.Video(value=video_path, format="mp4")
