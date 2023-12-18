@@ -212,7 +212,10 @@ with gr.Blocks(css=custom_css) as demo:
         Partnerships, questions: <a href="https://t.me/matthew_ddi">telegram</a>, <a href="mailto:matthew.ddy@gmail.com">email</a><br>
         Powered by OutfitAnyone model, Gradio<br>
         Not for commercial use
-
+    </div>
+    """)
+    gr.HTML("""
+    <div class="bottom-text">
         Demonstration video:
     </div>
     """)
