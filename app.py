@@ -29,6 +29,19 @@ def get_tryon_result(model_img_path, top_garment_path, lower_garment_path):
 
 
 custom_css = """
+/* Dark Theme Styles */
+body {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text */
+}
+.input_image, .output_image {
+    border: 2px solid #555; /* Dark borders for images */
+}
+button {
+    background-color: #333; /* Darker buttons */
+    color: white; /* Light text on buttons */
+}
+/* Add more dark theme styles as needed */
 body, html {
     height: 100%;
     margin: 0;
@@ -154,24 +167,6 @@ h1 {
 with gr.Blocks(css=custom_css) as demo:
     # Display the GIF
     gr.Image(value="images/hhL.gif")
-    # Define the video component with the correct video path
-    video_path = "video/2023.12.17_4524.mp4"  # Replace with your video path
-    video_display = gr.Video(value=video_path, format="mp4")
-    gr.HTML("""
-    <div class="down-arrow">
-        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
-    </div>
-    """)
-    gr.HTML("""
-    <div class="down-arrow">
-        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
-    </div>
-    """)
-    gr.HTML("""
-    <div class="down-arrow">
-        &#x25BC;  <!-- HTML character entity for a down-pointing arrow -->
-    </div>
-    """)
     gr.HTML("""
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
             Put Clothes on Models
@@ -219,6 +214,9 @@ with gr.Blocks(css=custom_css) as demo:
         Not for commercial use
     </div>
     """)
+    # Define the video component with the correct video path
+    video_path = "video/2023.12.17_4524.mp4"  # Replace with your video path
+    video_display = gr.Video(value=video_path, format="mp4")
 
 if __name__ == "__main__":
     demo.launch(show_api=False, share=False)
