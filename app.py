@@ -169,7 +169,7 @@ with gr.Blocks(css=custom_css) as demo:
     gr.Image(value="images/hhL.gif")
     gr.HTML("""
         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-            Put Clothes on Models
+            Put Clothes on Models. Try it yourself, choose a picture, press 'Generate'
         </h1>
     """)
     with gr.Row():
@@ -212,6 +212,8 @@ with gr.Blocks(css=custom_css) as demo:
         Partnerships, questions: <a href="https://t.me/matthew_ddi">telegram</a>, <a href="mailto:matthew.ddy@gmail.com">email</a><br>
         Powered by OutfitAnyone model, Gradio<br>
         Not for commercial use
+
+        Demonstration video:
     </div>
     """)
     # Define the video component with the correct video path
