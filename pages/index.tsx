@@ -28,14 +28,16 @@ export default function Home() {
       <Head>
         <title>Outfit Anyone</title>
       </Head>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-9K94NYM2MP" />
       <Script id="google-analytics">
         {`
-          window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-          ga('create', 'G-9K94NYM2MP', 'auto');
-          ga('send', 'pageview');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-9K94NYM2MP');
         `}
       </Script>
-      <Script src="https://www.google-analytics.com/analytics.js" />
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
           <div

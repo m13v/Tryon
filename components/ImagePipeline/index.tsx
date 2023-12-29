@@ -90,7 +90,7 @@ export default function ImagePipeline() {
 
   const handleGenerate = async () => {
     if (!app) return;
-    console.log("imageData:", imageData);
+    // console.log("imageData:", imageData);
     if (imageData.length < 2) {
       console.error("Missing imageData");
       return;
@@ -111,7 +111,7 @@ export default function ImagePipeline() {
       setIsLoading(true);
       const result = await app.predict("/get_tryon_result", imageData);
       setOutput(result.data[0].url);
-      console.log("result", result);
+      // console.log("result", result);
       setIsLoading(false);
     } catch (e) {
       console.log(e);
@@ -120,7 +120,7 @@ export default function ImagePipeline() {
   const handlePick = async (id, type) => {
     try {
       const result = await app.predict(apiUrls[type], [id]);
-      console.log("result", result);
+      // console.log("result", result);
       setImageData((prev) => {
         const temp = [...prev];
         temp[type] = { ...result.data[0].value };

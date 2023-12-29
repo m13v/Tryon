@@ -32,7 +32,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick}) {
       orig_name: file.name,
       path: data[0],
     });
-    console.log("upload", data);
+    // console.log("upload", data);
   };
 
   const handleClear = () => {
