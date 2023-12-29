@@ -40,12 +40,17 @@ export default function Home() {
       </Script>
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
-          <div
+          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/1.jpg'} alt="bg" width={5738} height={2475}  style={{objectFit: 'cover'}} quality={100} className="slide active"/>
+          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/2.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/3.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/4.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/5.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          {/* <div
             className="slide active"
             style={{
               backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/3.jpg')`,
             }}
-          ></div>
+          >I</div>
 
           <div
             className="slide"
@@ -72,20 +77,16 @@ export default function Home() {
             style={{
               backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/5.jpg')`,
             }}
-          ></div>
+          ></div> */}
 
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content glass rounded-xl mx-2">
             <div className="max-w-md  text-neutral">
               <h1 className="mb-5 text-5xl font-bold">
-                Experience Virtual Try-On Excellence
+              Outfit Anyone: Ultra-high quality virtual try-on for Any Clothing and Any Person
               </h1>
               <p className="mb-5">
-                Explore the forefront of virtual fashion with Outfit Anyone, a
-                state-of-the-art solution. Try on any clothing seamlessly with
-                lifelike results through advanced two-stream model. From
-                everyday to unique styles, unlock endless possibilities. Dive
-                into the virtual fashion revolution—try it now!
+              Outfit Anyone is a new virtual try-on technology that solves these problems. It uses a two-stream conditional diffusion model to create realistic images of clothing that adapt to different body shapes and poses.
               </p>
               <a className="btn btn-primary" href="#gen">
                 Get Started
