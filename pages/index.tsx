@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { client } from "@gradio/client";
 import ImagePipeline from "@/components/ImagePipeline";
 import { useEffect } from "react";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,14 @@ export default function Home() {
       <Head>
         <title>Outfit Anyone</title>
       </Head>
+      <Script id="google-analytics">
+        {`
+          window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+          ga('create', 'G-9K94NYM2MP', 'auto');
+          ga('send', 'pageview');
+        `}
+      </Script>
+      <Script src="https://www.google-analytics.com/analytics.js" />
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
           <div
