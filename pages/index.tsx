@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Head from "next/head";
 import { Inter } from "next/font/google";
 import { client } from "@gradio/client";
 import ImagePipeline from "@/components/ImagePipeline";
@@ -23,6 +24,9 @@ export default function Home() {
   }, []);
   return (
     <>
+      <Head>
+        <title>Outfit Anyone</title>
+      </Head>
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
           <div
