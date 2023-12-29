@@ -5,6 +5,11 @@ import { client } from "@gradio/client";
 import ImagePipeline from "@/components/ImagePipeline";
 import { useEffect } from "react";
 import Script from "next/script";
+import img1 from "@/public/slider/1.jpg";
+import img2 from "@/public/slider/2.jpg";
+import img3 from "@/public/slider/3.jpg";
+import img4 from "@/public/slider/4.jpg";
+import img5 from "@/public/slider/5.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,11 +45,11 @@ export default function Home() {
       </Script>
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
-          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/1.jpg'} alt="bg" width={5738} height={2475}  style={{objectFit: 'cover'}} quality={100} className="slide active"/>
-          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/2.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/3.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/4.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={'https://humanaigc.github.io/outfit-anyone/content/images/bs/5.jpg'} alt="bg" width={5738} height={2475} style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={img1} alt="bg" fill  style={{objectFit: 'cover'}} quality={100} priority className="slide active"/>
+          <Image src={img2} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={img3} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={img4} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
+          <Image src={img5} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
           {/* <div
             className="slide active"
             style={{
