@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ImageUploader({ imageList = [], onUpload, onPick}) {
+export default function ImageUploader({ imageList = [], onUpload, onPick }) {
   const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -38,14 +38,19 @@ export default function ImageUploader({ imageList = [], onUpload, onPick}) {
   const handleClear = () => {
     setSelectedImage(null);
     onUpload(null);
-  }
+  };
   return (
-    <div>
+    <div className="flex flex-col h-full self-stretch">
       {/* Image preview section */}
       {selectedImage ? (
-        <div className="mb-4 relative flex items-center justify-center">
-          <img src={selectedImage} alt="Selected" className="w-auto max-h-[500px]" />
-          <button 
+        <div className="mb-4 relative flex h-full self-stretch items-center justify-center">
+          <img
+            src={selectedImage}
+            alt="Selected"
+            className="w-full h-full object-contain"
+          />
+
+          <button
             className="absolute top-0 right-0 m-2 bg-red-500 text-white px-2 py-1 text-sm rounded"
             onClick={handleClear}
           >
@@ -54,13 +59,13 @@ export default function ImageUploader({ imageList = [], onUpload, onPick}) {
         </div>
       ) : (
         <button
-          className={`w-full h-64 flex justify-center items-center bg-gray-200 border border-dashed border-gray-400 rounded-lg ${!onUpload ? "cursor-not-allowed" : "cursor-pointer"}`}
+          className={`w-full flex-1 flex justify-center items-center bg-gray-200 border border-dashed border-gray-400 rounded-lg ${
+            !onUpload ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
           onClick={() => fileInputRef.current?.click()}
           disabled={!onUpload}
         >
-          <span>{
-            !onUpload ? "Pick Image" : "Upload Image" 
-            }</span>
+          <span>{!onUpload ? "Pick Image" : "Upload Image"}</span>
         </button>
       )}
 

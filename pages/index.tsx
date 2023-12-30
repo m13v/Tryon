@@ -6,28 +6,10 @@ import ImagePipeline from "@/components/ImagePipeline";
 import { useEffect } from "react";
 import Script from "next/script";
 import img1 from "@/public/slider/1.jpg";
-import img2 from "@/public/slider/2.jpg";
-import img3 from "@/public/slider/3.jpg";
-import img4 from "@/public/slider/4.jpg";
-import img5 from "@/public/slider/5.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  useEffect(() => {
-    const slides = document.querySelectorAll(".slide");
-    let currentSlide = 0;
-
-    function showSlide() {
-      slides.forEach((slide) => slide.classList.remove("active"));
-      slides[currentSlide].classList.add("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-    }
-
-    const intervalId = setInterval(showSlide, 5000);
-
-    return () => clearInterval(intervalId);
-  }, []);
   return (
     <>
       <Head>
@@ -45,55 +27,20 @@ export default function Home() {
       </Script>
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
-          <Image src={img1} alt="bg" fill  style={{objectFit: 'cover'}} quality={100} priority className="slide active"/>
-          <Image src={img2} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={img3} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={img4} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          <Image src={img5} alt="bg" fill style={{objectFit: 'cover'}} quality={100} className="slide"/>
-          {/* <div
-            className="slide active"
-            style={{
-              backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/3.jpg')`,
-            }}
-          >I</div>
-
-          <div
-            className="slide"
-            style={{
-              backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/2.jpg')`,
-            }}
-          ></div>
-
-          <div
-            className="slide"
-            style={{
-              backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/1.jpg')`,
-            }}
-          ></div>
-          <div
-            className="slide"
-            style={{
-              backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/4.jpg')`,
-            }}
-          ></div>
-
-          <div
-            className="slide"
-            style={{
-              backgroundImage: `url('https://humanaigc.github.io/outfit-anyone/content/images/bs/5.jpg')`,
-            }}
-          ></div> */}
+          <div className={"absolute top-0 left-0 right-0 bottom-0"}>
+            <video autoPlay loop muted className="w-full h-full object-cover">
+              <source src="/hhL.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
           <div className="hero-overlay bg-opacity-60"></div>
-          <div className="hero-content text-center text-neutral-content glass rounded-xl mx-2">
-            <div className="max-w-md  text-neutral">
-              <h1 className="mb-5 text-5xl font-bold">
-              Outfit Anyone: Ultra-high quality virtual try-on for Any Clothing and Any Person
+          <div className="hero-content text-center text-neutral-content">
+            <div className="text-neutral">
+              <h1 className="mb-5 text-6xl lg:text-9xl font-bold font-smooch">
+                Put Clothes on Models
               </h1>
-              <p className="mb-5">
-              Outfit Anyone is a new virtual try-on technology that solves these problems. It uses a two-stream conditional diffusion model to create realistic images of clothing that adapt to different body shapes and poses.
-              </p>
-              <a className="btn btn-primary" href="#gen">
+              <a className="btn btn-secondary btn-lg" href="#gen">
                 Get Started
               </a>
             </div>
@@ -101,13 +48,21 @@ export default function Home() {
         </div>
         <div
           id="gen"
-          className="min-h-screen lg:max-h-screen w-full p-2 flex flex-col"
+          className="min-h-screen lg:max-h-screen w-full lg:h-screen p-2 flex flex-col"
         >
           <h2 className="text-3xl font-bold text-center py-5">
             Put Clothes on Models. Try it yourself, choose a picture, press
             'Generate'
           </h2>
           <ImagePipeline />
+        </div>
+        <div className="min-h-screen relative">
+          <div className={"absolute top-0 left-0 right-0 bottom-0"}>
+            <video autoPlay loop muted controls className="w-full h-full object-contain" >
+              <source src="/tutor.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </main>
       <footer className="footer items-center p-4 bg-neutral text-neutral-content">

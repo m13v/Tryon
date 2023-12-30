@@ -131,9 +131,9 @@ export default function ImagePipeline() {
     }
   };
   return (
-    <div className="lg:flex flex-1 flex-col">
-      <div className="lg:flex lg:gap-2 flex-1 items-end">
-        <div className="flex flex-col lg:w-1/4">
+    <div className="lg:flex self-stretch h-full flex-col">
+      <div className="lg:flex lg:gap-2 h-full">
+        <div className="flex flex-col lg:w-1/3 flex-1">
           <h2 className="text-xl text-center pb-4">
             Select model (right now you can only choose one from the list)
           </h2>
@@ -143,66 +143,63 @@ export default function ImagePipeline() {
             onPick={(id) => handlePick(id, 0)}
           />
         </div>
-        <div className="flex flex-col lg:w-1/4">
+        <div className="flex flex-col lg:w-1/3 self-stretch h-full">
           <h2 className="text-xl text-center pb-4">
-            Choose a top or upload your own
+            Select top and bottom garment or upload your own
           </h2>
-          <ImageUploader
-            imageList={top_garment}
-            onUpload={(image) =>
-              setImageData((prev) => {
-                const temp = [...prev];
-                temp[1] = image;
-                return temp;
-              })
-            }
-            onPick={(id) => handlePick(id, 1)}
-          />
+          <div className="h-1/2">
+            <ImageUploader
+              imageList={top_garment}
+              onUpload={(image) =>
+                setImageData((prev) => {
+                  const temp = [...prev];
+                  temp[1] = image;
+                  return temp;
+                })
+              }
+              onPick={(id) => handlePick(id, 1)}
+            />
+          </div>
+          <div className="h-1/2">
+            <ImageUploader
+              imageList={lower_garment}
+              onUpload={(image) =>
+                setImageData((prev) => {
+                  const temp = [...prev];
+                  temp[2] = image;
+                  return temp;
+                })
+              }
+              onPick={(id) => handlePick(id, 2)}
+            />
+          </div>
         </div>
-
-        <div className="flex flex-col lg:w-1/4">
-          <h2 className="text-xl text-center pb-4">
-            Choose the bottom of your clothes or upload your own. (if the top of
-            the garment is a one-piece dress, then the bottom can be left empty)
-          </h2>
-          <ImageUploader
-            imageList={lower_garment}
-            onUpload={(image) =>
-              setImageData((prev) => {
-                const temp = [...prev];
-                temp[2] = image;
-                return temp;
-              })
-            }
-            onPick={(id) => handlePick(id, 2)}
-          />
-        </div>
-        <div className="flex flex-col lg:w-1/4 self-center">
+        <div className="flex flex-col lg:w-1/3 self-stretch flex-1">
           <h2 className="text-xl text-center pb-4">Result</h2>
+          <div className="text-center py-4">
+            {isLoading ? (
+              <button className="btn  w-full">
+                <span className="loading loading-spinner"></span>
+                waiting...
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary w-full"
+                onClick={handleGenerate}
+              >
+                Generate
+              </button>
+            )}
+          </div>
           {output && (
-            <div className="flex justify-center items-center">
-              <img src={output} alt="result" className="w-auto max-h-[500px]" />
+            <div className="flex justify-center items-center self-stretch h-full">
+              <img src={output} alt="result" className="w-full h-full object-contain" />
             </div>
           )}
           {!output && (
-            <div>
-              <div className="skeleton w-auto h-[500px] max-h-[500px]"></div>
-            </div>
+              <div className="skeleton w-auto flex-1"></div>
           )}
         </div>
-      </div>
-
-      <div className="text-center py-8">
-        {isLoading ? (
-          <button className="btn">
-            <span className="loading loading-spinner"></span>
-            waiting...
-          </button>
-        ) : (
-          <button className="btn btn-primary" onClick={handleGenerate}>
-            Generate
-          </button>
-        )}
       </div>
     </div>
   );
