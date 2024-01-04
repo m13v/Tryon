@@ -1,7 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import ImageUploader from "./ImageUploader";
 import { client } from "@gradio/client";
-import * as ga from '@/libs/ga'
+import { GrNext } from "react-icons/gr";
+import * as ga from "@/libs/ga";
+import { wrap } from "module";
 
 const apiUrls = ["/load_example", "/load_example_1", "/load_example_2"];
 
@@ -79,6 +81,7 @@ export default function ImagePipeline() {
   const [imageData, setImageData] = useState([]);
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const wrapperRef = useRef(null);
   useEffect(() => {
     (async () => {
       const a = await client(
@@ -87,6 +90,12 @@ export default function ImagePipeline() {
       );
       setApp(a);
     })();
+
+    const isDesktop = window.innerWidth > 1024;
+    if (wrapperRef.current && isDesktop) {
+      const height = wrapperRef.current.offsetHeight;
+      wrapperRef.current.style.height = `${height}px`;
+    }
   }, []);
 
   const handleGenerate = async () => {
@@ -115,23 +124,23 @@ export default function ImagePipeline() {
       // console.log("result", result);
       setIsLoading(false);
       ga.event({
-        action: 'click',
+        action: "click",
         params: {
-          category: 'generate',
-          label: 'generate',
+          category: "generate",
+          label: "generate",
           error: false,
-        }
-      })
+        },
+      });
     } catch (e) {
       console.log(e);
       ga.event({
-        action: 'click',
+        action: "click",
         params: {
-          category: 'generate',
-          label: 'generate',
+          category: "generate",
+          label: "generate",
           error: true,
-        }
-      })
+        },
+      });
     }
   };
   const handlePick = async (id, type) => {
@@ -148,9 +157,13 @@ export default function ImagePipeline() {
     }
   };
   return (
-    <div className="lg:flex self-stretch h-full flex-col">
-      <div className="lg:flex lg:gap-2 h-full">
-        <div className="flex flex-col lg:w-1/3 flex-1">
+    <div className="lg:flex self-stretch h-full flex-col pb-8">
+      <h2 className="text-3xl font-bold text-center py-5">
+        Put Clothes on Models. Try it yourself, choose a picture, press
+        'Generate'
+      </h2>
+      <div className="lg:flex lg:gap-4 h-full pb-6 items-stretch">
+        <div className="flex flex-col border-2 rounded-3xl border-base-300 p-4 flex-1">
           <h2 className="text-xl text-center pb-4">
             Select model (right now you can only choose one from the list)
           </h2>
@@ -160,7 +173,11 @@ export default function ImagePipeline() {
             onPick={(id) => handlePick(id, 0)}
           />
         </div>
-        <div className="flex flex-col lg:w-1/3 self-stretch h-full">
+        <div className="flex items-center justify-center">
+          <GrNext size={28} className="rotate-90 lg:rotate-0 text-base-300" />
+        </div>
+
+        <div className="flex flex-col self-stretch h-full  border-2 rounded-3xl border-base-300 p-4 flex-1">
           <h2 className="text-xl text-center pb-4">
             Select top and bottom garment or upload your own
           </h2>
@@ -191,7 +208,10 @@ export default function ImagePipeline() {
             />
           </div>
         </div>
-        <div className="flex flex-col lg:w-1/3 self-stretch flex-1">
+        <div className="flex items-center justify-center">
+          <GrNext size={28} className="rotate-90 lg:rotate-0 text-base-300" />
+        </div>
+        <div className="flex flex-col self-stretch flex-1 border-2 rounded-3xl border-base-300 p-4">
           <h2 className="text-xl text-center pb-4">Result</h2>
           <div className="text-center py-4">
             {isLoading ? (
@@ -203,19 +223,34 @@ export default function ImagePipeline() {
               <button
                 className="btn btn-primary w-full"
                 onClick={handleGenerate}
+                disabled={!imageData[0]?.path || !imageData[1]?.path}
               >
                 Generate
               </button>
             )}
           </div>
-          {output && (
-            <div className="flex justify-center items-center self-stretch h-full">
-              <img src={output} alt="result" className="w-full h-full object-contain" />
-            </div>
-          )}
-          {!output && (
-              <div className="skeleton w-auto flex-1"></div>
-          )}
+          <div
+            className="w-auto h-full flex flex-col justify-center items-center"
+            ref={wrapperRef}
+          >
+            {output && !isLoading && (
+              <img
+                src={output}
+                alt="result"
+                className="w-full h-full object-contain"
+              />
+            )}
+            {isLoading && (
+              <span className="loading loading-bars loading-lg"></span>
+            )}
+
+            {(!imageData[0]?.orig_name || !imageData[0]?.path) && (
+              <p>No model</p>
+            )}
+            {(!imageData[1]?.orig_name || !imageData[1]?.path) && (
+              <p>No top garment</p>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -35,12 +35,8 @@ export default function Home() {
         </div>
         <div
           id="gen"
-          className="min-h-screen lg:max-h-screen w-full lg:h-screen p-2 flex flex-col"
+          className="min-h-screen lg:max-h-screen w-full lg:h-screen p-2"
         >
-          <h2 className="text-3xl font-bold text-center py-5">
-            Put Clothes on Models. Try it yourself, choose a picture, press
-            'Generate'
-          </h2>
           <ImagePipeline />
         </div>
         <div className="min-h-screen relative">
