@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ImageUploader from "./ImageUploader";
 import { client } from "@gradio/client";
+import * as ga from '@/libs/ga'
 
 const apiUrls = ["/load_example", "/load_example_1", "/load_example_2"];
 
@@ -113,8 +114,24 @@ export default function ImagePipeline() {
       setOutput(result.data[0].url);
       // console.log("result", result);
       setIsLoading(false);
+      ga.event({
+        action: 'click',
+        params: {
+          category: 'generate',
+          label: 'generate',
+          error: false,
+        }
+      })
     } catch (e) {
       console.log(e);
+      ga.event({
+        action: 'click',
+        params: {
+          category: 'generate',
+          label: 'generate',
+          error: true,
+        }
+      })
     }
   };
   const handlePick = async (id, type) => {

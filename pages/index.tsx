@@ -1,30 +1,17 @@
-import Image from "next/image";
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import { client } from "@gradio/client";
 import ImagePipeline from "@/components/ImagePipeline";
-import { useEffect } from "react";
-import Script from "next/script";
-import img1 from "@/public/slider/1.jpg";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
   return (
     <>
       <Head>
         <title>Outfit Anyone</title>
       </Head>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-9K94NYM2MP" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-9K94NYM2MP');
-        `}
-      </Script>
       <main className={``}>
         <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
           <div className={"absolute top-0 left-0 right-0 bottom-0"}>
