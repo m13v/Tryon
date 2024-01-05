@@ -2,18 +2,46 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import ImagePipeline from "@/components/ImagePipeline";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
   return (
     <>
       <Head>
         <title>Outfit Anyone</title>
+        <meta
+          name="description"
+          content="Outfit Anyone: Virtual fitting of the highest quality for any clothing and any person. Secure upload of clothing images. Learn more!"
+        />
+        <meta
+          name="keywords"
+          content="Outfit Anyone, virtual fitting, high quality, album, try, security, research, ModelScope, Hugging Face, fashion, style, innovations, Put Clothes on Models"
+        />
+
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Put Clothes on Models"
+        />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <meta property="og:title" content="Put Clothes on Models" />
+        <meta
+          property="og:description"
+          content="Outfit Anyone: Virtual fitting of the highest quality for any clothing and any person. Secure upload of clothing images. Learn more!"
+        />
+        {/* <meta property="og:image" content="URL_TO_YOUR_IMAGE" /> */}
+        <meta property="og:url" content="https://outfitanyone.site" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Outfit Anyone" />
+        <meta property="og:locale" content="en_US" />
       </Head>
       <main className={``}>
-        <div className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
+        <section className="hero min-h-screen relative bg-center bg-no-repeat bg-cover">
           <div className={"absolute top-0 left-0 right-0 bottom-0"}>
             <video autoPlay loop muted className="w-full h-full object-cover">
               <source src="/hhL.mp4" type="video/mp4" />
@@ -32,21 +60,27 @@ export default function Home() {
               </a>
             </div>
           </div>
-        </div>
-        <div
+        </section>
+        <section
           id="gen"
           className="min-h-screen lg:max-h-screen w-full lg:h-screen p-2"
         >
           <ImagePipeline />
-        </div>
-        <div className="min-h-screen relative">
+        </section>
+        <section className="min-h-screen relative">
           <div className={"absolute top-0 left-0 right-0 bottom-0"}>
-            <video autoPlay loop muted controls className="w-full h-full object-contain" >
+            <video
+              autoPlay
+              loop
+              muted
+              controls
+              className="w-full h-full object-contain"
+            >
               <source src="/tutor.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
-        </div>
+        </section>
       </main>
       <footer className="footer items-center p-4 bg-neutral text-neutral-content">
         <aside className="items-center grid-flow-col">
@@ -74,7 +108,7 @@ export default function Home() {
           <p className="text-sm">Not for commercial use</p>
         </aside>
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <a href="https://t.me/matthew_ddi" target="_blank">
+          <a href="https://t.me/matthew_ddi" target="_blank" aria-label="Contact via telegram">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -85,7 +119,7 @@ export default function Home() {
               <path d="M29.919 6.163l-4.225 19.925c-0.319 1.406-1.15 1.756-2.331 1.094l-6.438-4.744-3.106 2.988c-0.344 0.344-0.631 0.631-1.294 0.631l0.463-6.556 11.931-10.781c0.519-0.462-0.113-0.719-0.806-0.256l-14.75 9.288-6.35-1.988c-1.381-0.431-1.406-1.381 0.288-2.044l24.837-9.569c1.15-0.431 2.156 0.256 1.781 2.013z" />{" "}
             </svg>
           </a>
-          <a href="mailto:matthew.ddy@gmail.com">
+          <a href="mailto:matthew.ddy@gmail.com" aria-label="Contact via email">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
@@ -93,7 +127,6 @@ export default function Home() {
               viewBox="0 0 30 30.000001"
               height="32"
               preserveAspectRatio="xMidYMid meet"
-              version="1.0"
               className="fill-current"
             >
               <defs>

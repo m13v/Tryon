@@ -83,6 +83,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
       {/* Hidden file input for triggering the file selection */}
       <input
         type="file"
+        aria-label="Upload image"
         ref={fileInputRef}
         className="hidden"
         onChange={(event) => {
