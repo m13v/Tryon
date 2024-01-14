@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect } from "react";
 
 export default function ImageUploader({ imageList = [], onUpload, onPick }) {
@@ -102,10 +103,12 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
             className="btn btn-square btn-ghost btn-lg"
             onClick={() => handlePick(image.id, image.url)}
           >
-            <img
+            <Image
               src={image.url}
               alt={`Thumbnail ${index}`}
               className="w-auto h-full object-contain cursor-pointer"
+              width={128}
+              height={128}
             />
           </button>
         ))}

@@ -51,6 +51,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "humanaigc-outfitanyone.hf.space",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   // experimental: {appDir: true}
