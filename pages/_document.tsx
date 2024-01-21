@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -20,6 +21,16 @@ export default function Document() {
             });
           `,
           }}
+        />
+        <Script
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.COFRAME_PAGE_ID="65ac5e0d7129e024968a92c2";`,
+          }}
+        />
+        <Script
+          strategy="beforeInteractive"
+          src="https://cdn.jsdelivr.net/npm/coframe-ai/dist/cf.min.js"
         />
       </Head>
       <body>
