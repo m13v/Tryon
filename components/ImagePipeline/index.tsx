@@ -220,7 +220,7 @@ export default function ImagePipeline() {
                 onClick={handleGenerate}
                 disabled={!imageData[0]?.path || !imageData[1]?.path}
               >
-                Generate
+                生成搭配
               </button>
             )}
           </div>
