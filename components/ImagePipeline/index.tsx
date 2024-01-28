@@ -159,14 +159,11 @@ export default function ImagePipeline() {
   return (
     <div className="lg:flex self-stretch h-full flex-col pb-8">
       <h2 className="text-3xl font-bold text-center py-5">
-        Put Clothes on Models. Try it yourself, choose a picture, press
-        'Generate'
+        算法妈妈虚拟试衣服务
       </h2>
       <div className="lg:flex lg:gap-4 h-full pb-6 items-stretch">
         <div className="flex flex-col border-2 rounded-3xl border-base-300 p-4 flex-1">
-          <h2 className="text-xl text-center pb-4">
-            Select model (right now you can only choose one from the list)
-          </h2>
+          <h2 className="text-xl text-center pb-4">选择模特</h2>
           <ImageUploader
             imageList={models}
             onUpload={null}
@@ -178,9 +175,7 @@ export default function ImagePipeline() {
         </div>
 
         <div className="flex flex-col self-stretch h-full  border-2 rounded-3xl border-base-300 p-4 flex-1">
-          <h2 className="text-xl text-center pb-4">
-            Select top and bottom garment or upload your own
-          </h2>
+          <h2 className="text-xl text-center pb-4">选择或上传你的上装和下装</h2>
           <div className="h-1/2">
             <ImageUploader
               imageList={top_garment}
@@ -212,7 +207,7 @@ export default function ImagePipeline() {
           <GrNext size={28} className="rotate-90 lg:rotate-0 text-base-300" />
         </div>
         <div className="flex flex-col self-stretch flex-1 border-2 rounded-3xl border-base-300 p-4">
-          <h2 className="text-xl text-center pb-4">Result</h2>
+          <h2 className="text-xl text-center pb-4">虚拟试衣效果</h2>
           <div className="text-center py-4">
             {isLoading ? (
               <button className="btn  w-full">
