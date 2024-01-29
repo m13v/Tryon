@@ -55,6 +55,10 @@ const lower_garment = [
 
 const models = [
   {
+    id: 0,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/91baf552252b7f9c6416f3175f35e98070565a57/Rouyan_0.png",
+  },
+  {
     id: 1,
     url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/f7dce00cee84dadceb24526d4ce5cc5999855c9d/Rouyan_2.png",
   },
@@ -67,8 +71,40 @@ const models = [
     url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/2f060521cb67195666c59ccd0e47ecc2587a4100/Simon_1.png",
   },
   {
+    id: 4,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/3a2287f20c44729f5c7804235f113de32c769baf/Eva_1.png",
+  },
+  {
+    id: 5,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/9a02f1f9b4db87c22a3341612edeaca4b65920e0/Simon_0.png",
+  },
+  {
     id: 6,
     url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/ef12488138e32ba30930bd342a53fbc409ad00a9/Xuanxuan_0.png",
+  },
+  {
+    id: 7,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/daca749076bd63a3d8c8a97225a031123e6b432a/Xuanxuan_2.png",
+  },
+  {
+    id: 8,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/951c48e394c297c0632753d1a5fa5b79c59c9a36/Yaqi_1.png",
+  },
+  {
+    id: 9,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/6f793bb1d75f34cdc2c980467ef2f2c242fe9b56/Yifeng_0.png",
+  },
+  {
+    id: 10,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/4c5c245e2e96bf61ea1e606d11e31d0a915575e1/Yifeng_3.png",
+  },
+  {
+    id: 11,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/57c66d2b92687a8e1ab12034a9a40d5ae1936ff7/Rouyan_1.png",
+  },
+  {
+    id: 12,
+    url: "https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/file=/tmp/gradio/64f42706321086bbcc24d37a29a5be87da06ef59/Yifeng_2.png",
   },
   {
     id: 13,
@@ -175,7 +211,7 @@ export default function ImagePipeline() {
         </div>
 
         <div className="flex flex-col self-stretch h-full  border-2 rounded-3xl border-base-300 p-4 flex-1">
-          <h2 className="text-xl text-center pb-4">选择或上传你的上装和下装</h2>
+          <h2 className="text-xl text-center pb-4">选择或上传上装和下装</h2>
           <div className="h-1/2">
             <ImageUploader
               imageList={top_garment}
@@ -212,7 +248,7 @@ export default function ImagePipeline() {
             {isLoading ? (
               <button className="btn  w-full">
                 <span className="loading loading-spinner"></span>
-                waiting...
+                搭配生成中...
               </button>
             ) : (
               <button

@@ -80,7 +80,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
             onClick={() => fileInputRef.current?.click()}
             disabled={!onUpload}
           >
-            <span>{!onUpload ? "Pick Image" : "Upload Image"}</span>
+            <span>{!onUpload ? "模特图片" : "上传衣服"}</span>
           </button>
         )}
       </div>

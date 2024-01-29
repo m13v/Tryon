@@ -75,7 +75,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="link link-hover"
           >
-            Powered by 算法妈妈@2024
+            Powered by 算法妈妈@2024 我们使用AIGC赋能服装行业
           </a>
         </aside>
       </footer>
