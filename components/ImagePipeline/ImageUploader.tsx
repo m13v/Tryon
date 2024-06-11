@@ -18,7 +18,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
     const randomString = generateRandomString();
 
     const response = await fetch(
-      `https://humanaigc-outfitanyone.hf.space/--replicas/o90fr/upload?upload_id=${randomString}`,
+      `https://humanaigc-outfitanyone.hf.space/upload?upload_id=${randomString}`,
       {
         method: "POST",
         body: formData,
@@ -54,7 +54,10 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
   return (
     <div className="flex flex-col h-full self-stretch">
       {/* Image preview section */}
-      <div className="mb-4 relative flex h-full self-stretch items-center justify-center"  ref={wrapperRef}>
+      <div
+        className="mb-4 relative flex h-full self-stretch items-center justify-center"
+        ref={wrapperRef}
+      >
         {selectedImage ? (
           <>
             <img
@@ -66,7 +69,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
               className="absolute top-0 right-0 m-2 bg-red-500 text-white px-2 py-1 text-sm rounded"
               onClick={handleClear}
             >
-              Clear
+              清除
             </button>
           </>
         ) : (
@@ -77,7 +80,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
             onClick={() => fileInputRef.current?.click()}
             disabled={!onUpload}
           >
-            <span>{!onUpload ? "Pick Image" : "Upload Image"}</span>
+            <span>{!onUpload ? "模特图片" : "上传衣服"}</span>
           </button>
         )}
       </div>

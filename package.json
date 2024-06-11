@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=3001 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "18.x"
+  },  
   "dependencies": {
     "@gradio/client": "^0.9.1",
     "next": "14.0.4",
