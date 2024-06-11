@@ -7,7 +7,7 @@
 * 完整搭配而非两件套
 
 ## 线上服务
-[内测免费使用](https://tryon.algmon.com)
+[免费使用](https://tryon.suanfamama.com)
 
 ## 附加信息
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

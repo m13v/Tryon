@@ -18,7 +18,7 @@ export default function ImageUploader({ imageList = [], onUpload, onPick }) {
     const randomString = generateRandomString();
 
     const response = await fetch(
-      `https://humanaigc-outfitanyone.hf.space/--replicas/ppht9/upload?upload_id=${randomString}`,
+      `https://humanaigc-outfitanyone.hf.space/upload?upload_id=${randomString}`,
       {
         method: "POST",
         body: formData,
